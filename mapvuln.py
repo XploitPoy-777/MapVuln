@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  # This is the ONLY added line
 import argparse
 import requests
 import re
@@ -311,7 +313,13 @@ def setup_proxy(proxy_url):
             'http': proxy_url,
             'https': proxy_url
         }
-
+        # Point to your Burp/ZAP CA certificate
+        if os.path.exists('burp-ca.crt'):
+            session.verify = 'burp-ca.crt'
+        else:
+            session.verify = False
+            print(f"{colors.YELLOW}[!] Warning: Using proxy without certificate verification{colors.RESET}")
+        
 def get_sitemap_urls(base_url):
     """Discover sitemap URLs from common locations"""
     sitemap_urls = []
