@@ -49,12 +49,12 @@ chmod +x mapvuln.py
 ## Usage Instructions
 ```bash
 # One-Line Advanced Usage
-python sitemap_scanner.py -u https://example.com -o vulns.json -p http://127.0.0.1:8080 -t 15 --timeout 30
+python mapvuln.py -u https://example.com -o vulns.json -p http://127.0.0.1:8080 -t 15 --timeout 30
 
 # Basic Scan
-python sitemap_scanner.py -u https://example.com
+python mapvuln.py -u https://example.com
 # Scan Multiple Sites from File
-python sitemap_scanner.py -i urls.txt -o results.json
+python mapvuln.py -i urls.txt -o results.json
 ```
 
 ## Options
